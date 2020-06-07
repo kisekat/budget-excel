@@ -5,11 +5,12 @@ import os
 
 COL_NUM = 5
 PATH = 'files/'
+GEN_PATH = 'generated_files/'
 LAST_WORD = ['Итого:', 'итого:', 'Общий итог:', 'общий итог', 'итого', 'общий итог', 'ИТОГО:', 'ИТОГО', 'Всего:']
 
 
 def filename(path):
-    pattern = re.compile(r"\W(\S+)\.[a-z]+")
+    pattern = re.compile(r"\W(\S+)")
     m = pattern.search(path)
     return m.group(1)  #filename
 
@@ -86,7 +87,9 @@ def write_file(data, path):
     # Set the width of the first column
     length = max(len(cell[:][0]) for cell in data[1:]) + 1
     sheet_style(sheet, length)
-    book.save("generated_files/" + filename(path) + ".xlsx")
+    if not os.path.exists(GEN_PATH):
+        os.makedirs(GEN_PATH)
+    book.save(GEN_PATH + filename(path))
 
 
 def read_file(sheet, columns=COL_NUM):
