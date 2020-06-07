@@ -41,6 +41,11 @@ def sheet_style(sheet, length):
 
 
 def write_file(data, path):
+    '''
+    :param data: list of values
+    :param path: path to source file to create a new file with the same name
+    :return: creates a new file
+    '''
     book = Workbook()
     sheet = book.active
 
@@ -98,7 +103,7 @@ def read_file(sheet, columns=COL_NUM):
     prints out the math error in the file
     :param sheet: list of xls file
     :param columns: number of valuable columns (5 - default)
-    :return: list of values in the file
+    :return: list of values
     '''
     data = []
     is_last_row = False  # last line flag
@@ -161,9 +166,8 @@ def read_file(sheet, columns=COL_NUM):
 
 def load_file(path):
     '''
-    loading xls file from path
+    loading xls file from path, writes modified data to a file
     :param path: path to xlsx file
-    :return: list of values
     '''
     book = load_workbook(path)
     sheet = book.active
