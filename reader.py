@@ -21,7 +21,7 @@ def merge_bold_center(sheet, row, col_start, col_end):
     cell.alignment = Alignment(horizontal="center")
     cell.font = Font(bold=True)
     if row == 0:
-        cell.font = Font(size="14")
+        cell.font = Font(size="16")
     else:
         cell.value = str(cell.value).capitalize()
     return cell
@@ -176,8 +176,11 @@ def load_file(path):
 
 
 if __name__ == "__main__":
-    for file_name in os.listdir('files/'):
-        print(PATH + file_name)
-        load_file(PATH + file_name)
+    file_name = 'smeta_05_17_2023.xlsx'
+    print(PATH + file_name)
+    load_file(PATH + file_name)
+    # for file_name in os.listdir('files/'):
+    #     print(PATH + file_name)
+    #     load_file(PATH + file_name)
 
 
